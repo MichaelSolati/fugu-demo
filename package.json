@@ -9,14 +9,36 @@
     "preview": "astro preview",
     "astro": "astro"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichaelSolati/fugu-demo.git"
+  },
+  "author": "Michael Solati <mkslt04@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "private": false,
+  "bugs": {
+    "url": "https://github.com/MichaelSolati/fugu-demo/issues"
+  },
+  "homepage": "https://github.com/MichaelSolati/fugu-demo#readme",
   "dependencies": {
     "@astrojs/check": "^0.2.1",
     "@astrojs/react": "^3.0.4",
+    "@material/button": "^14.0.0",
+    "@material/card": "^14.0.0",
+    "@material/icon-button": "^14.0.0",
+    "@material/theme": "^14.0.0",
+    "@material/top-app-bar": "^14.0.0",
     "@types/react": "^18.2.32",
     "@types/react-dom": "^18.2.14",
     "astro": "^3.3.4",
+    "bootstrap": "^5.3.2",
+    "normalize.css": "^8.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "sass": "^1.69.5",
     "typescript": "^5.2.2"
   }
 }

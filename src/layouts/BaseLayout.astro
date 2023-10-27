@@ -1,0 +1,24 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import ContentWrapper from "../components/ContentWrapper.tsx";
+
+const { title = 'Fugu Demo', description = 'A simple web app showcasing the capabilities of the web!' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+    <slot name="head" />
+  </head>
+
+  <body style="height: 100%;">
+    <ContentWrapper client:load>
+      <main id="content" class="mdc-top-app-bar--fixed-adjust">
+        <div class="container is-fluid">
+          <slot />
+        </div>
+      </main>
+    </ContentWrapper>
+  </body>
+</html>
