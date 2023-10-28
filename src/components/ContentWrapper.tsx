@@ -21,9 +21,7 @@ export default function ContentWrapper({ children }: Props) {
 
     window.addEventListener("resize", handleResize);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const toggleDrawer = () => {
@@ -34,10 +32,7 @@ export default function ContentWrapper({ children }: Props) {
   return (
     <>
       <Navbar toggleDrawer={toggleDrawer} />
-      <Drawer
-        isOpen={isOpen}
-        toggleDrawer={toggleDrawer}
-      />
+      <Drawer isOpen={isOpen} toggleDrawer={toggleDrawer} />
       {children}
     </>
   );

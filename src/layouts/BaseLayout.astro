@@ -1,6 +1,7 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import ContentWrapper from "../components/ContentWrapper.tsx";
+import GamepadNavigation from "../components/GamepadNavigation.tsx";
 import pagesData from "../pagesData.ts";
 
 export interface Props {
@@ -27,6 +28,7 @@ const {
   </head>
 
   <body>
+    <GamepadNavigation client:only="react" />
     <ContentWrapper client:load>
       <main class="mdc-top-app-bar--fixed-adjust">
         <slot />
