@@ -12,21 +12,7 @@ export default function CodeTab({ children, code }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    const tabBar = new MDCTabBar(
-      tabsRef.current?.querySelector(".mdc-tab-bar") as Element
-    );
-
-    // const contentEls = tabsRef.current?.querySelectorAll(
-    //   ".content"
-    // ) as NodeListOf<Element>;
-
-    // tabBar.listen("MDCTabBar:activated", function (event: any) {
-    //   (
-    //     tabsRef.current?.querySelector(".content--active") as Element
-    //   ).classList.remove("content--active");
-
-    //   contentEls[event.detail.index].classList?.add("content--active");
-    // });
+    new MDCTabBar(tabsRef.current?.querySelector(".mdc-tab-bar") as Element);
   }, []);
 
   return (

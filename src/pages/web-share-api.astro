@@ -1,0 +1,146 @@
+---
+import fs from "graceful-fs";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CodeTab from "../components/CodeTab.tsx";
+import pagesData from "../pagesData.ts";
+import { normalizeSlug } from "../helpers.ts";
+
+import WebShareButton from "../components/examples/WebShareButton.tsx";
+const webShareButtonCode: string = fs.readFileSync(
+  "./src/components/examples/WebShareButton.tsx",
+  "utf-8"
+);
+
+const url = normalizeSlug(Astro.url.pathname);
+const { title, description } = pagesData[url];
+---
+
+<BaseLayout description={description} title={title}>
+  <h1>{title}</h1>
+
+  <p>
+    The <a
+      target="_blank"
+      href="https://developer.mozilla.org/docs/Web/API/Web_Share_API"
+      ><em>Web Share API</em></a
+    > invokes the platform-specific sharing mechanism of the device, allowing
+    data such as text, a URL, or files from a web application to be shared with
+    any other application, such as mail clients, messaging applications, and
+    more.
+  </p>
+
+  <p>
+    The method called to share data is <a
+      target="_blank"
+      href="https://developer.mozilla.org/docs/Web/API/Navigator/share"
+      ><code>navigator.share()</code></a
+    >. The <code>navigator.share()</code> method accepts an object containing
+    the data to share and returns a Promise. Not every file type can be shared,
+    though, and the <a
+      target="_blank"
+      href="https://developer.mozilla.org/docs/Web/API/Navigator/canShare"
+      ><code>navigator.canShare()</code></a
+    > method can test a data object to see if the browser can share it. You can
+    see the <a
+      target="_blank"
+      href="https://developer.mozilla.org/docs/Web/API/Navigator/share#shareable_file_types"
+      >list of shareable file types</a
+    > on MDN.
+  </p>
+
+  <p>
+    After calling <code>navigator.share()</code>, the browser will open a
+    platform-specific sheet where users select which application to share the
+    data with.
+  </p>
+
+  <p>
+    Additionally, the Web Share API can only be triggered by a user’s
+    interaction with the page, such as a button click; the Web Share API cannot
+    be called arbitrarily by executed code.
+  </p>
+
+  <h3>Web Share Example</h3>
+  <CodeTab code={webShareButtonCode} client:load>
+    <WebShareButton client:load />
+  </CodeTab>
+
+  <h2>Usage</h2>
+
+  <figure>
+    <iframe
+      title="Usage of the Web Share API from 2021 to 2022 on desktop and mobile."
+      tabindex="-1"
+      id="fig-1"
+      aria-labelledby="fig-1-caption"
+      aria-describedby="fig-1-description"
+      width="600"
+      height="371"
+      seamless=""
+      loading="lazy"
+      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTZp0g2lyspAvJUN-xV4TtqC_9wrRMqyg_bEzHCd1Be3p0Yhy3o2k-SH7DGX5a-LfaodNUTl4Ai-NXg/pubchart?oid=934956615&format=interactive"
+    ></iframe>
+    <br />
+    <details id="fig-1-description">
+      <summary>Description of Figure 1</summary>
+      <p>
+        The Web Share API shrunk in usage from 9.00% in 2021 to 8.84% in 2022 on
+        desktop. On mobile, usage shrunk from 8.58% in 2021 to 8.36% in 2022.
+      </p>
+    </details>
+    <br />
+    <figcaption id="fig-1-caption">
+      <a href="#fig-1" class="anchor-link">Figure 1.</a> Usage of the Web Share
+      API from 2021 to 2022 on desktop and mobile.
+    </figcaption>
+  </figure>
+
+  <p>
+    The Web Share API shrunk in usage from 9.00% in 2021 to 8.84% in 2022 on
+    desktop. On mobile, usage shrunk from 8.58% in 2021 to 8.36% in 2022. As a
+    result, this year, the Web Share API was the second most used API on both
+    desktop and mobile, falling behind the Async Clipboard API—last year's
+    second most used API.
+  </p>
+
+  <p>
+    On many sites, you can find the Web Share API in use. For example, social
+    media platforms, documentation sites, and others use it as a great way to
+    share content. Some examples where you can find the API in use include <a
+      target="_blank"
+      href="https://web.dev/">web.dev</a
+    > and <a target="_blank" href="https://twitter.com/">twitter.com</a>.
+  </p>
+
+  <figure>
+    <picture id="fig-2">
+      <source
+        media="(prefers-reduced-motion: no-preference)"
+        type="image/gif"
+        srcset="/Web-Share-API.gif"
+        width="640"
+        height="360"
+      />
+      <img
+        src="/Web-Share-API.webp"
+        alt="Sharing a Twitter profile using the Web Share API."
+        aria-labelledby="fig-2-caption"
+        aria-describedby="fig-2-description"
+        width="640"
+        height="360"
+        loading="lazy"
+      />
+    </picture>
+    <br />
+    <details id="fig-2-description">
+      <summary>Description of Figure 2</summary>
+      <p>Sharing a Twitter profile using the Web Share API.</p>
+    </details>
+    <br />
+    <figcaption id="fig-2-caption">
+      <a href="#fig-2" class="anchor-link">Figure 2.</a> Sharing a Twitter
+      profile using the Web Share API.
+    </figcaption>
+  </figure>
+</BaseLayout>
