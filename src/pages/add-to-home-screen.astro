@@ -6,9 +6,9 @@ import CodeTab from "../components/CodeTab.tsx";
 import pagesData from "../pagesData.ts";
 import { normalizeSlug } from "../helpers.ts";
 
-import AddToHomeScreen from "../components/examples/AddToHomeScreen.tsx";
-const addToHomeScreenCode: string = fs.readFileSync(
-  "./src/components/examples/AddToHomeScreen.tsx",
+import AddToHomeScreenButton from "../components/examples/AddToHomeScreenButton.tsx";
+const addToHomeScreenButtonCode: string = fs.readFileSync(
+  "./src/components/examples/AddToHomeScreenButton.tsx",
   "utf-8"
 );
 
@@ -107,8 +107,8 @@ const { title, description } = pagesData[url];
   </p>
 
   <h2>Add to Home Screem Example</h2>
-  <CodeTab code={addToHomeScreenCode} client:load>
-    <AddToHomeScreen client:load />
+  <CodeTab code={addToHomeScreenButtonCode} client:load>
+    <AddToHomeScreenButton client:load />
   </CodeTab>
 
   <h2>Usage</h2>
@@ -163,3 +163,4 @@ const { title, description } = pagesData[url];
     </figcaption>
   </figure>
 </BaseLayout>
+../components/examples/AddToHomeScreenButton.tsx

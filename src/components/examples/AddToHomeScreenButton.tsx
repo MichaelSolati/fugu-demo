@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function AddToHomeScreen() {
+export default function AddToHomeScreenButton() {
   const [installPrompt, setInstallPrompt] = useState<any>();
 
   useEffect(() => {
