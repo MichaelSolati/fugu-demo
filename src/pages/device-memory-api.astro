@@ -6,9 +6,9 @@ import CodeTab from "../components/CodeTab.tsx";
 import pagesData from "../pagesData.ts";
 import { normalizeSlug } from "../helpers.ts";
 
-import DeviceMemory from "../components/examples/DeviceMemory.tsx";
+import DeviceMemory from "../examples/DeviceMemory.tsx";
 const deviceMemoryCode: string = fs.readFileSync(
-  "./src/components/examples/DeviceMemory.tsx",
+  "./src/examples/DeviceMemory.tsx",
   "utf-8"
 );
 
@@ -87,3 +87,4 @@ const { title, description } = pagesData[url];
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowfullscreen></iframe>
 </BaseLayout>
+../examples/DeviceMemory.tsx

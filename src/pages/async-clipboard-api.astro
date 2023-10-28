@@ -6,15 +6,15 @@ import CodeTab from "../components/CodeTab.tsx";
 import pagesData from "../pagesData.ts";
 import { normalizeSlug } from "../helpers.ts";
 
-import ClipboardWriteButton from "../components/examples/ClipboardWriteButton.tsx";
+import ClipboardWriteButton from "../examples/ClipboardWriteButton.tsx";
 const clipboardWriteButtonCode: string = fs.readFileSync(
-  "./src/components/examples/ClipboardWriteButton.tsx",
+  "./src/examples/ClipboardWriteButton.tsx",
   "utf-8"
 );
 
-import ClipboardReadButton from "../components/examples/ClipboardReadButton.tsx";
+import ClipboardReadButton from "../examples/ClipboardReadButton.tsx";
 const clipboardReadButtonCode: string = fs.readFileSync(
-  "./src/components/examples/ClipboardReadButton.tsx",
+  "./src/examples/ClipboardReadButton.tsx",
   "utf-8"
 );
 
@@ -152,3 +152,4 @@ const { title, description } = pagesData[url];
     used API).
   </p>
 </BaseLayout>
+../examples/ClipboardWriteButton.tsx../examples/ClipboardReadButton.tsx

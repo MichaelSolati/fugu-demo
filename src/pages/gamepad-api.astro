@@ -6,9 +6,9 @@ import CodeTab from "../components/CodeTab.tsx";
 import pagesData from "../pagesData.ts";
 import { normalizeSlug } from "../helpers.ts";
 
-import GamepadDetector from "../components/examples/GamepadDetector.tsx";
+import GamepadDetector from "../examples/GamepadDetector.tsx";
 const gamepadDetectorCode: string = fs.readFileSync(
-  "./src/components/examples/GamepadDetector.tsx",
+  "./src/examples/GamepadDetector.tsx",
   "utf-8"
 );
 
@@ -140,3 +140,4 @@ const { title, description } = pagesData[url];
     </figcaption>
   </figure>
 </BaseLayout>
+../examples/GamepadDetector.tsx

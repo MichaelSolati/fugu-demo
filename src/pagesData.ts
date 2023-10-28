@@ -31,5 +31,9 @@ export default {
   "/gamepad-api/": {
     title: "Gamepad API",
     description: "The Gamepad API is how web applications respond to input from gamepads and other game controllers."
+  },
+  "/push-api/": {
+    title: "Push API",
+    description: "The Push API allows web applications to receive messages from a server regardless of whether the application was in the foreground."
   }
 } as { [key: string]: { navHome?: string, title: string, description: string } }

@@ -7,7 +7,7 @@ import pagesData from "../pagesData.ts";
 import { normalizeSlug } from "../helpers.ts";
 
 const serviceWorkerCode: string = fs.readFileSync(
-  "./src/components/examples/ServiceWorker.ts",
+  "./src/examples/ServiceWorker.ts",
   "utf-8"
 );
 
@@ -46,7 +46,7 @@ const { title, description } = pagesData[url];
     Firefox, and Safari.
   </p>
 
-  <h3>Service Worker Example</h3>
+  <h2>Service Worker Example</h2>
   <CodeTab code={serviceWorkerCode} client:load />
 
   <h2>Usage</h2>

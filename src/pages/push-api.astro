@@ -1,0 +1,57 @@
+---
+import fs from "graceful-fs";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CodeTab from "../components/CodeTab.tsx";
+import pagesData from "../pagesData.ts";
+import { normalizeSlug } from "../helpers.ts";
+
+import NotificationButton from "../examples/NotificationButton.tsx";
+const notificationButtonCode: string = fs.readFileSync(
+  "./src/examples/NotificationButton.tsx",
+  "utf-8"
+);
+
+const url = normalizeSlug(Astro.url.pathname);
+const { title, description } = pagesData[url];
+---
+
+<BaseLayout description={description} title={title}>
+  <h1>{title}</h1>
+
+  <p>
+    The <a
+      target="_blank"
+      href="https://developer.mozilla.org/docs/Web/API/Push_API">Push API</a
+    > allows web applications to receive messages from a server regardless of
+    whether the application was in the foreground. Developers can send
+    asynchronous notifications and updates to users who opt in, giving them
+    meaningful updates and a nudge to reengage with an application.
+  </p>
+
+  <p>
+    Web applications must also have a service worker to receive push
+    notifications from a server. From within the service worker, push
+    notifications can be subscribed to using the <a
+      href="https://developer.mozilla.org/docs/Web/API/PushManager/subscribe"
+      ><code>PushManager.subscribe()</code></a
+    > method.
+  </p>
+
+  <p>
+    The Push API is available on modern versions of Chrome, Edge, and Firefox.
+  </p>
+
+  <h2>Notification Example</h2>
+  <CodeTab code={notificationButtonCode} client:load>
+    <NotificationButton client:load />
+  </CodeTab>
+
+  <h2>Usage</h2>
+
+  <p>
+    The Push API was not measured in 2021. In 2022, its first year of tracking,
+    the API was used on 2.03% of desktop pages and 1.86% of mobile pages, making
+    it the eighth most used capability on desktop and mobile.
+  </p>
+</BaseLayout>

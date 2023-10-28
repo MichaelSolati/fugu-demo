@@ -6,9 +6,9 @@ import CodeTab from "../components/CodeTab.tsx";
 import pagesData from "../pagesData.ts";
 import { normalizeSlug } from "../helpers.ts";
 
-import WebShareButton from "../components/examples/WebShareButton.tsx";
+import WebShareButton from "../examples/WebShareButton.tsx";
 const webShareButtonCode: string = fs.readFileSync(
-  "./src/components/examples/WebShareButton.tsx",
+  "./src/examples/WebShareButton.tsx",
   "utf-8"
 );
 
@@ -166,3 +166,4 @@ const { title, description } = pagesData[url];
     </figcaption>
   </figure>
 </BaseLayout>
+../examples/WebShareButton.tsx

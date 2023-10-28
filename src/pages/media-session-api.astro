@@ -6,9 +6,9 @@ import CodeTab from "../components/CodeTab.tsx";
 import pagesData from "../pagesData.ts";
 import { normalizeSlug } from "../helpers.ts";
 
-import MediaSession from "../components/examples/MediaSession.tsx";
+import MediaSession from "../examples/MediaSession.tsx";
 const mediaSessionCode: string = fs.readFileSync(
-  "./src/components/examples/MediaSession.tsx",
+  "./src/examples/MediaSession.tsx",
   "utf-8"
 );
 
@@ -86,3 +86,4 @@ const { title, description } = pagesData[url];
     </figcaption>
   </figure>
 </BaseLayout>
+../examples/MediaSession.tsx
