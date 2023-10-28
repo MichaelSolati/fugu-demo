@@ -19,5 +19,9 @@ export default {
   "/device-memory-api/": {
     title: "Device Memory API",
     description: "The Device Memory API provides insight into the memory available by providing the read-only property deviceMemory."
+  },
+  "/gamepad-api/": {
+    title: "Gamepad API",
+    description: "The Gamepad API is how web applications respond to input from gamepads and other game controllers."
   }
 } as { [key: string]: { navHome?: string, title: string, description: string } }

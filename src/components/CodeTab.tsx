@@ -12,7 +12,10 @@ export default function CodeTab({ children, code }: Props) {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
-    new MDCTabBar(tabsRef.current?.querySelector(".mdc-tab-bar") as Element);
+    const tabBar = new MDCTabBar(
+      tabsRef.current?.querySelector(".mdc-tab-bar") as Element
+    );
+    return () => tabBar.destroy();
   }, []);
 
   return (

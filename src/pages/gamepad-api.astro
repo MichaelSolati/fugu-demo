@@ -1,0 +1,142 @@
+---
+import fs from "graceful-fs";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CodeTab from "../components/CodeTab.tsx";
+import pagesData from "../pagesData.ts";
+import { normalizeSlug } from "../helpers.ts";
+
+import GamepadDetector from "../components/examples/GamepadDetector.tsx";
+const gamepadDetectorCode: string = fs.readFileSync(
+  "./src/components/examples/GamepadDetector.tsx",
+  "utf-8"
+);
+
+const url = normalizeSlug(Astro.url.pathname);
+const { title, description } = pagesData[url];
+---
+
+<BaseLayout description={description} title={title}>
+  <h1>{title}</h1>
+
+  <p>
+    The <a
+      target="_blank"
+      href="https://developer.mozilla.org/docs/Web/API/Gamepad_API"
+      >Gamepad API</a
+    > is how web applications respond to input from gamepads and other game
+    controllers. This API has three interfaces; one that represents the
+    controller connected to the device, one that represents buttons on the
+    connected controller, and finally, one that is for events fired when a
+    gamepad is connected or disconnected.
+  </p>
+
+  <p>
+    The Gamepad API is available on modern versions of Chrome, Edge, Firefox,
+    and Safari.
+  </p>
+
+  <h3>Gamepad Example</h3>
+  <CodeTab code={gamepadDetectorCode} client:load>
+    <GamepadDetector client:load />
+  </CodeTab>
+
+  <h2>Usage</h2>
+
+  <figure id="fig-1">
+    <div class="iframe-to-img">
+      <iframe
+        title="Usage of the Gamepad API from 2021 to 2022 on desktop and mobile."
+        tabindex="-1"
+        id="fig-1"
+        aria-labelledby="fig-1-caption"
+        aria-describedby="fig-1-description"
+        width="600"
+        height="371"
+        seamless=""
+        loading="lazy"
+        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTZp0g2lyspAvJUN-xV4TtqC_9wrRMqyg_bEzHCd1Be3p0Yhy3o2k-SH7DGX5a-LfaodNUTl4Ai-NXg/pubchart?oid=679096832&format=interactive"
+      ></iframe>
+      <img
+        src="/Gamepad-API-Usage.png"
+        alt="Usage of the Gamepad API from 2021 to 2022 on desktop and mobile."
+        aria-labelledby="fig-1-caption"
+        aria-describedby="fig-1-description"
+        width="600"
+        height="371"
+        data-width="600"
+        data-height="371"
+        data-seamless=""
+        data-frameborder="0"
+        data-scrolling="no"
+        data-iframe="https://docs.google.com/spreadsheets/d/e/2PACX-1vTZp0g2lyspAvJUN-xV4TtqC_9wrRMqyg_bEzHCd1Be3p0Yhy3o2k-SH7DGX5a-LfaodNUTl4Ai-NXg/pubchart?oid=679096832&format=interactive"
+        loading="lazy"
+      />
+    </div>
+    <br />
+    <details id="fig-1-description">
+      <summary>Description of Figure 1</summary>
+      <p>
+        The Gamepad API shrunk in usage from 4.39% in 2021 to 4.12% in 2022 on
+        desktop. On mobile, usage shrunk from 5.10% in 2021 to 4.65% in 2022.
+      </p>
+    </details>
+    <br />
+    <figcaption id="fig-1-caption">
+      <a href="#fig-1">Figure 1.</a> Usage of the Gamepad API from 2021 to 2022
+      on desktop and mobile.
+    </figcaption>
+  </figure>
+
+  <p>
+    The Gamepad API shrunk in usage from 4.39% in 2021 to 4.12% in 2022 on
+    desktop. On mobile, use shrunk from 5.10% in 2021 to 4.65% in 2022. As a
+    result, this year, the Gamepad API was the seventh most used capability on
+    desktop and the sixth most used mobile.
+  </p>
+
+  <p>
+    Web applications such as <a
+      target="_blank"
+      ,
+      href="https://killedbygoogle.com/">Google's Stadia (RIP)</a
+    >, NVIDIA's GeForce Now, and Microsoft's Xbox Cloud Gaming provide gaming
+    experiences that run on the cloud comparable to the experience of running
+    games on local devices or a gaming console. Thanks to the Gamepad API, these
+    web applications allow users to use traditional console game controllers
+    rather than just a keyboard and mouse.
+  </p>
+
+  <figure id="fig-2">
+    <picture>
+      <source
+        media="(prefers-reduced-motion: no-preference)"
+        type="image/gif"
+        srcset="/Gamepad-API.gif"
+        width="640"
+        height="360"
+      />
+      <img
+        src="/Gamepad-API.webp"
+        alt="Connecting an Xbox controller to Google Stadia in the Chrome browser."
+        aria-labelledby="fig-2-caption"
+        aria-describedby="fig-2-description"
+        width="640"
+        height="360"
+        loading="lazy"
+      />
+    </picture>
+    <br />
+    <details id="fig-2-description">
+      <summary>Description of Figure 2</summary>
+      <p>
+        Connecting an Xbox controller to Google Stadia in the Chrome browser.
+      </p>
+    </details>
+    <br />
+    <figcaption id="fig-2-caption">
+      <a href="#fig-2">Figure 2.</a>Connecting an Xbox controller to Google
+      Stadia in the Chrome browser.
+    </figcaption>
+  </figure>
+</BaseLayout>
