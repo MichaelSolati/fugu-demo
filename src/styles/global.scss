@@ -105,8 +105,12 @@ main {
   }
 }
 
-.code-block > div {
-  overflow: auto;
+.code-block {
+  background-color: #1e1e1e;
+
+  > div {
+    overflow: auto;
+  }
 }
 
 .container,
