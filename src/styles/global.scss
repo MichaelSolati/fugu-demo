@@ -22,6 +22,25 @@ body {
 
 figure {
   text-align: center;
+
+  .iframe-to-img {
+    iframe {
+      display: none;
+    }
+    @media (min-width: 928px) {
+      iframe {
+        display: inline;
+      }
+
+      img {
+        display: none;
+      }
+    }
+  }
+}
+
+iframe {
+  max-width: 100%;
 }
 
 h1,

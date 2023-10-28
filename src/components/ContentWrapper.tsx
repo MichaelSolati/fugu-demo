@@ -14,6 +14,16 @@ export default function ContentWrapper({ children }: Props) {
 
   useEffect(() => {
     setIsOpen(window.innerWidth > environment.breakpoints.mobile);
+
+    const handleResize = () => {
+      setIsOpen(window.innerWidth > environment.breakpoints.mobile);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const toggleDrawer = () => {
@@ -24,7 +34,10 @@ export default function ContentWrapper({ children }: Props) {
   return (
     <>
       <Navbar toggleDrawer={toggleDrawer} />
-      <Drawer isOpen={isOpen} setIsOpen={setIsOpen} />
+      <Drawer
+        isOpen={isOpen}
+        toggleDrawer={toggleDrawer}
+      />
       {children}
     </>
   );
