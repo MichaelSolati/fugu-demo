@@ -1,0 +1,132 @@
+---
+import fs from "graceful-fs";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CodeTab from "../components/CodeTab.tsx";
+import pagesData from "../pagesData.ts";
+import { normalizeSlug } from "../helpers.ts";
+
+import ClipboardWriteButton from "../components/examples/ClipboardWriteButton.tsx";
+const clipboardWriteButtonCode: string = fs.readFileSync(
+  "./src/components/examples/ClipboardWriteButton.tsx",
+  "utf-8"
+);
+
+import ClipboardReadButton from "../components/examples/ClipboardReadButton.tsx";
+const clipboardReadButtonCode: string = fs.readFileSync(
+  "./src/components/examples/ClipboardReadButton.tsx",
+  "utf-8"
+);
+
+const url = normalizeSlug(Astro.url.pathname);
+const { title, description } = pagesData[url];
+---
+
+<BaseLayout description={description} title={title}>
+  <h1>{title}</h1>
+
+  <p>
+    The <a
+      href="https://developer.mozilla.org/docs/Web/API/Clipboard_API"
+      target="_blank"><code>Async Clipboard API</code></a
+    >, allows web application to read and write into the system's clipboard.
+  </p>
+
+  <p>
+    Note that the Async Clipboard API replaces the deprecated <code
+      >document.execCommand()</code
+    > API to access the clipboard.
+  </p>
+
+  <h2>Write Access</h2>
+
+  <p>
+    A list of the mandatory data types a browser must support by the Clipboards
+    API specification exists; see this <a
+      href="https://www.w3.org/TR/clipboard-apis/#mandatory-data-types-x"
+      target="_blank">list by the W3C</a
+    >. Unfortunately, not all vendors support the complete list; check
+    browser-specific documentation when possible.
+  </p>
+
+  <p>
+    In order to write data into the clipboard, there are the <a
+      href="https://developer.mozilla.org/docs/Web/API/Clipboard/writeText"
+      target="_blank"><code>writeText()</code></a
+    > and <a
+      href="https://developer.mozilla.org/docs/Web/API/Clipboard/write"
+      target="_blank"><code>write()</code></a
+    > methods. The <code>writeText()</code> method takes a String argument and
+    returns a Promise, while <code>write()</code> takes an array of <a
+      href="https://developer.mozilla.org/docs/Web/API/ClipboardItem"
+      target="_blank"><code>ClipboardItem</code></a
+    > objects and also returns a Promise. <code>ClipboardItem</code> objects can
+    hold arbitrary data, such as images.
+  </p>
+
+  <h3>Write Access Example</h3>
+  <CodeTab code={clipboardWriteButtonCode} client:load>
+    <ClipboardWriteButton client:load />
+  </CodeTab>
+
+  <h2>Read Access</h2>
+
+  <p>
+    In order to read data from the clipboard, there are the <a
+      href="https://developer.mozilla.org/docs/Web/API/Clipboard/readText"
+      target="_blank"><code>readText()</code></a
+    > and <a
+      href="https://developer.mozilla.org/docs/Web/API/Clipboard/read"
+      target="_blank"><code>read()</code></a
+    > methods. Both methods return a Promise which will resolve with data from
+    the clipboard. The <code>readText()</code> method resolves as a String while
+
+
+    <code>read()</code> resolves as an array of <code>ClipboardItem</code>
+     objects.
+  </p>
+
+  <h3>Read Access Example</h3>
+  <CodeTab code={clipboardReadButtonCode} client:load>
+    <ClipboardReadButton client:load />
+  </CodeTab>
+
+  <h2>Usage</h2>
+
+  <figure>
+    <iframe
+      title="Usage of the Async Clipboard API from 2021 to 2022 on desktop and mobile."
+      tabindex="-1"
+      id="fig-1"
+      aria-labelledby="fig-1-caption"
+      aria-describedby="fig-1-description"
+      width="600"
+      height="371"
+      seamless=""
+      loading="lazy"
+      src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTZp0g2lyspAvJUN-xV4TtqC_9wrRMqyg_bEzHCd1Be3p0Yhy3o2k-SH7DGX5a-LfaodNUTl4Ai-NXg/pubchart?oid=602028150&format=interactive"
+    ></iframe>
+    <br />
+    <details>
+      <summary>Description of Figure 1</summary>
+      <p>
+        The Async Clipboard API grew in usage from 8.91% in 2021 to 10.10% in
+        2022 on desktop. On mobile, usage grew from 8.25% in 2021 to 9.27% in
+        2022.
+      </p>
+    </details>
+    <br />
+    <figcaption id="fig-1-caption">
+      <a href="#fig-1" class="anchor-link">Figure 1.</a> Usage of the Async
+      Clipboard API from 2021 to 2022 on desktop and mobile.
+    </figcaption>
+  </figure>
+
+  <p>
+    The Async Clipboard API saw growth in usage from 8.91% in 2021 to 10.10% in
+    2022 on desktop. On mobile, there was also growth from 8.25% in 2021 to
+    9.27% in 2022. As a result, this year, the Async Clipboard API was the most
+    used API on both desktop and mobile, beating the Web Share API (2021's most
+    used API).
+  </p>
+</BaseLayout>

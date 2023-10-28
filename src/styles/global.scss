@@ -1,12 +1,27 @@
 @import "normalize.css/normalize.css";
-@import "bootstrap/scss/bootstrap-grid.scss";
 @import "./material";
+
+a {
+  color: var(--mdc-theme-secondary);
+
+  &:hover {
+    text-decoration: none;
+  }
+}
 
 body {
   background-color: var(--mdc-theme-background);
   color: var(--mdc-theme-on-surface);
   font-family: Segoe UI, system-ui, -apple-system, sans-serif;
+  height: 100%;
   overflow-wrap: break-word;
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+figure {
+  text-align: center;
 }
 
 h1,
@@ -20,16 +35,21 @@ h6 {
 }
 
 h1 {
-  font-size: 60px;
-  line-height: 60px;
+  font-size: 36px;
+  line-height: 36px;
+  margin-bottom: 36px;
 }
 
 h2 {
+  font-size: 28px;
+  line-height: 28px;
+}
+
+h3 {
   font-size: 20px;
   line-height: 20px;
 }
 
-h3,
 h4,
 h5,
 h6 {
@@ -41,6 +61,21 @@ h6 {
 img {
   height: auto;
   max-width: 100%;
+}
+
+main {
+  padding: 0 24px 54px 24px;
+
+  @media (min-width: 577px) {
+    left: 200px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.code-block > div {
+  overflow: auto;
 }
 
 .container,
@@ -60,12 +95,14 @@ img {
   }
 }
 
-main {
-  @media (min-width: 576px) {
-    bottom: 0;
-    left: 200px;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
+.mdc-deprecated-list {
+  color: var(--mdc-theme-on-primary, rgba(0, 0, 0, 0.87));
+}
+
+.mdc-tab-indicator__content--underline {
+  border-color: var(--mdc-theme-on-surface) !important;
+}
+
+.mdc-tab__text-label {
+  color: var(--mdc-theme-on-surface) !important;
 }

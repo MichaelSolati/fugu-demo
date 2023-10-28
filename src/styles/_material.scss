@@ -2,6 +2,11 @@
 @use "@material/button/styles";
 @use "@material/card";
 @use '@material/icon-button';
+@use '@material/list/mdc-list';
+@use "@material/tab/mdc-tab";
+@use "@material/tab-bar/mdc-tab-bar";
+@use "@material/tab-scroller/mdc-tab-scroller";
+@use "@material/tab-indicator/mdc-tab-indicator";
 @use '@material/top-app-bar/mdc-top-app-bar';
 
 @include card.core-styles;
