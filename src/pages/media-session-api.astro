@@ -1,0 +1,88 @@
+---
+import fs from "graceful-fs";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CodeTab from "../components/CodeTab.tsx";
+import pagesData from "../pagesData.ts";
+import { normalizeSlug } from "../helpers.ts";
+
+import MediaSession from "../components/examples/MediaSession.tsx";
+const mediaSessionCode: string = fs.readFileSync(
+  "./src/components/examples/MediaSession.tsx",
+  "utf-8"
+);
+
+const url = normalizeSlug(Astro.url.pathname);
+const { title, description } = pagesData[url];
+---
+
+<BaseLayout description={description} title={title}>
+  <h1>{title}</h1>
+
+  <p>
+    The <a
+      target="_blank"
+      href="https://developer.mozilla.org/docs/Web/API/Media_Session_API"
+      >Media Session API</a
+    > allows developers to create custom media notifications for audio or video
+    content on the web. The API includes action handlers that browsers can use
+    to access media control on keyboards, headsets, and the software controls on
+    a device's notification area and lock screens. The Media Session API
+    empowers users to know and control what's playing on a web page without
+    needing to be actively viewing said page.
+  </p>
+
+  <p>
+    When a page plays audio or video content, users get a media notification
+    that appears in their mobile device's notification tray or on their
+    desktop's media hub. Browsers will try to show a title and an icon, but the
+    Media Session API allows the notification to be customized with rich media
+    metadata, such as the title, artist name, album name, and album artwork.
+  </p>
+
+  <h3>Media Session Example</h3>
+  <CodeTab code={mediaSessionCode} client:load>
+    <MediaSession client:load />
+  </CodeTab>
+
+  <h2>Usage</h2>
+
+  <p>
+    The Media Session API was not measured last year. In its first year of
+    tracking, the API was used on 8.37% of desktop pages and 7.41% of mobile
+    pages, making it the fourth most used capability on desktop and mobile.
+  </p>
+
+  <p>
+    Web applications such as YouTube, YouTube Music, Spotify, and others take
+    advantage of the Media Session API and provide rich controls for the video
+    or audio played.
+  </p>
+
+  <figure>
+    <picture id="fig-1">
+      <img
+        src="/Media-Session-API.png"
+        alt="Accessing controls and information for YouTube Music via the Window's Taskbar."
+        aria-labelledby="fig-1-caption"
+        aria-describedby="fig-1-description"
+        width="600"
+        height="371"
+        loading="lazy"
+      />
+    </picture>
+    <br />
+    <details id="fig-1-description">
+      <summary>Description of Figure 1</summary>
+      <p>
+        Accessing controls and information for YouTube Music via the Window's
+        Taskbar.
+      </p>
+    </details>
+    <br />
+    <figcaption id="fig-1-caption">
+      <a href="#fig-1" class="anchor-link">Figure 1.</a> Accessing controls and
+      information for YouTube Music via the Window's Taskbar.
+    </figcaption>
+  </figure>
+</BaseLayout>

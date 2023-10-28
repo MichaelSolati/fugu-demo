@@ -11,5 +11,9 @@ export default {
   "/web-share-api/": {
     "title": "Web Share API",
     "description": "The Web Share API uses platform-specific sharing of a device to send data such as text, a URL, and more from a web application to any application."
+  },
+  "/media-session-api/": {
+    "title": "Media Session API",
+    "description": "The Media Session API allows developers to create custom media notifications for audio or video content on the web."
   }
 } as { [key: string]: { navHome?: string, title: string, description: string } }

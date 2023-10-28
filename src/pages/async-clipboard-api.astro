@@ -28,7 +28,7 @@ const { title, description } = pagesData[url];
   <p>
     The <a
       href="https://developer.mozilla.org/docs/Web/API/Clipboard_API"
-      target="_blank"><code>Async Clipboard API</code></a
+      target="_blank">Async Clipboard API</a
     >, allows web application to read and write into the system's clipboard.
   </p>
 
@@ -36,6 +36,11 @@ const { title, description } = pagesData[url];
     Note that the Async Clipboard API replaces the deprecated <code
       >document.execCommand()</code
     > API to access the clipboard.
+  </p>
+
+  <p>
+    Both read and write access to the clipboard is available on modern versions
+    of Chrome, Edge, and Safari. Firefox only supports <code>writeText()</code>.
   </p>
 
   <h2>Write Access</h2>
