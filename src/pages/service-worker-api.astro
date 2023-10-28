@@ -1,0 +1,123 @@
+---
+import fs from "graceful-fs";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CodeTab from "../components/CodeTab.tsx";
+import pagesData from "../pagesData.ts";
+import { normalizeSlug } from "../helpers.ts";
+
+const serviceWorkerCode: string = fs.readFileSync(
+  "./src/components/examples/ServiceWorker.ts",
+  "utf-8"
+);
+
+const url = normalizeSlug(Astro.url.pathname);
+const { title, description } = pagesData[url];
+---
+
+<BaseLayout description={description} title={title}>
+  <h1>{title}</h1>
+
+  <p>
+    <a
+      target="_blank"
+      href="https://developer.mozilla.org/docs/Web/API/Service_Worker_API"
+      >Service workers</a
+    > are one of the core components of Progressive Web Apps. They act as a
+    client-side proxy that puts developers in control of the system's cache and
+    how to respond to resource requests. By pre-caching essential resources,
+    developers can eliminate the dependence on the network, ensuring instant and
+    reliable experiences.
+  </p>
+
+  <p>
+    In addition to caching resources, service workers can update assets from the
+    server, allow for push notifications, and allow access to the background and
+    periodic background sync APIs.
+  </p>
+
+  <p>
+    While service workers have become widely adopted and supported by major
+    browsers, not all features of service workers are available on all browsers.
+  </p>
+
+  <p>
+    The Service Worker API is available on modern versions of Chrome, Edge,
+    Firefox, and Safari.
+  </p>
+
+  <h3>Service Worker Example</h3>
+  <CodeTab code={serviceWorkerCode} client:load />
+
+  <h2>Usage</h2>
+
+  <figure id="fig-1">
+    <div class="iframe-to-img">
+      <iframe
+        title="Usage of the Service Worker API from 2021 to 2022 on desktop and mobile."
+        tabindex="-1"
+        id="fig-1"
+        aria-labelledby="fig-1-caption"
+        aria-describedby="fig-1-description"
+        width="600"
+        height="371"
+        seamless=""
+        loading="lazy"
+        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTZp0g2lyspAvJUN-xV4TtqC_9wrRMqyg_bEzHCd1Be3p0Yhy3o2k-SH7DGX5a-LfaodNUTl4Ai-NXg/pubchart?oid=304563360&format=interactive"
+      ></iframe>
+      <img
+        src="/Service-Worker-API-Usage.png"
+        alt="Usage of the Service Worker API from 2021 to 2022 on desktop and mobile."
+        aria-labelledby="fig-1-caption"
+        aria-describedby="fig-1-description"
+        width="600"
+        height="371"
+        data-width="600"
+        data-height="371"
+        data-seamless=""
+        data-frameborder="0"
+        data-scrolling="no"
+        data-iframe="https://docs.google.com/spreadsheets/d/e/2PACX-1vTZp0g2lyspAvJUN-xV4TtqC_9wrRMqyg_bEzHCd1Be3p0Yhy3o2k-SH7DGX5a-LfaodNUTl4Ai-NXg/pubchart?oid=304563360&format=interactive"
+        loading="lazy"
+      />
+    </div>
+    <br />
+    <details id="fig-1-description">
+      <summary>Description of Figure 1</summary>
+      <p>
+        Usage of the Service Worker API from 2021 to 2022 on desktop and mobile.
+      </p>
+    </details>
+    <br />
+    <figcaption id="fig-1-caption">
+      <a href="#fig-1">Figure 1.</a> Usage of the Service Worker API from 2021
+      to 2022 on desktop and mobile.
+    </figcaption>
+  </figure>
+
+  <p>
+    The Service Worker API was not measured in 2021s Capabilities chapter.
+    However, using <a
+      target="_blank"
+      href="https://almanac.httparchive.org/en/2021/pwa#service-workers-usage"
+      >data from the 2021 PWA chapter</a
+    >, the API grew in usage from 3.05% to 4.17% on desktop and 3.22% to 3.85%
+    on mobile pages, making it the sixth most used capability on desktop and the
+    seventh most used mobile.
+  </p>
+
+  <p>
+    Note that how the service worker usage in the PWA chapter is measured
+    differs from how the Capabilities chapter measures it. Additionally, a bug
+    in the data pipeline for last year's PWA chapter was found, resulting in an
+    undercounting of service worker usage.
+  </p>
+
+  <p>
+    For a deeper dive into service worker usage on the web, check out the <a
+      target="_blank"
+      href="https://almanac.httparchive.org/en/2021/pwa#service-workers"
+      >PWA chapter</a
+    > of the 2022 Web Almanac.
+  </p>
+</BaseLayout>

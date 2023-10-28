@@ -3,7 +3,7 @@ import { MDCTabBar } from "@material/tab-bar";
 import CodeBlock from "./CodeBlock";
 
 interface Props {
-  children: JSX.Element;
+  children?: JSX.Element;
   code: string;
 }
 
@@ -39,21 +39,23 @@ export default function CodeTab({ children, code }: Props) {
                 </span>
                 <span className="mdc-tab__ripple"></span>
               </button>
-              <button
-                onClick={() => setActiveIndex(1)}
-                className="mdc-tab"
-                role="tab"
-                aria-selected="true"
-                tabIndex={0}
-              >
-                <span className="mdc-tab__content">
-                  <span className="mdc-tab__text-label">Example</span>
-                </span>
-                <span className="mdc-tab-indicator">
-                  <span className="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                </span>
-                <span className="mdc-tab__ripple"></span>
-              </button>
+              {children && (
+                <button
+                  onClick={() => setActiveIndex(1)}
+                  className="mdc-tab"
+                  role="tab"
+                  aria-selected="true"
+                  tabIndex={0}
+                >
+                  <span className="mdc-tab__content">
+                    <span className="mdc-tab__text-label">Example</span>
+                  </span>
+                  <span className="mdc-tab-indicator">
+                    <span className="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                  </span>
+                  <span className="mdc-tab__ripple"></span>
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -63,10 +65,12 @@ export default function CodeTab({ children, code }: Props) {
         <div style={activeIndex !== 0 ? { display: "none" } : {}}>
           <CodeBlock client:load code={code} />
         </div>
-        <div style={activeIndex !== 1 ? { display: "none" } : {}}>
-          {children}
-          <br />
-        </div>
+        {children && (
+          <div style={activeIndex !== 1 ? { display: "none" } : {}}>
+            {children}
+            <br />
+          </div>
+        )}
       </div>
       <br />
     </div>

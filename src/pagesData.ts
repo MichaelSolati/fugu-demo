@@ -24,6 +24,10 @@ export default {
     title: "Device Memory API",
     description: "The Device Memory API provides insight into the memory available by providing the read-only property deviceMemory."
   },
+  "/service-worker-api/": {
+    title: "Service Worker API",
+    description: "Service workers act as a client-side proxy that puts developers in control of the system's cache and how to respond to resource requests."
+  },
   "/gamepad-api/": {
     title: "Gamepad API",
     description: "The Gamepad API is how web applications respond to input from gamepads and other game controllers."
