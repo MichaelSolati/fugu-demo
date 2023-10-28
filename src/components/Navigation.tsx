@@ -3,7 +3,7 @@ import { useGamepads } from "react-gamepads";
 
 import pagesData from "../pagesData.ts";
 
-export default function GamepadNavigation() {
+export default function Navigation() {
   const pages = Object.entries(pagesData);
   const pathname = location.pathname;
   const origin = location.origin;
@@ -26,4 +26,19 @@ export default function GamepadNavigation() {
       location.href = new URL(pages[nextPageIndex][0], origin).toString();
     }
   }, [gamepads[0]?.buttons]);
+
+  return (
+    <div className="mdc-top-app-bar__row">
+      <section className="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+        <a className="mdc-button" href={pages[previousPageIndex][0]}>
+          <span className="mdc-button__label">{pages[previousPageIndex][1].title}</span>
+        </a>
+      </section>
+      <section className="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+        <a className="mdc-button" href={pages[nextPageIndex][0]}>
+          <span className="mdc-button__label">{pages[nextPageIndex][1].title}</span>
+        </a>
+      </section>
+    </div>
+  );
 }
