@@ -1,7 +1,3 @@
-import AudioPlayer from "react-h5-audio-player";
-
-import "../../styles/components/examples/MediaSession.scss";
-
 export default function MediaSession() {
   const onPlay = () => {
     navigator.mediaSession.metadata = new MediaMetadata({
@@ -18,9 +14,5 @@ export default function MediaSession() {
     });
   };
 
-  return (
-    <>
-      <AudioPlayer src="/risk-studiokolomna.mp3" onPlay={onPlay} />
-    </>
-  );
+  return <audio onPlay={onPlay} controls src="/risk-studiokolomna.mp3" />;
 }
