@@ -1,0 +1,89 @@
+---
+import fs from "graceful-fs";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CodeTab from "../components/CodeTab.tsx";
+import pagesData from "../pagesData.ts";
+import { normalizeSlug } from "../helpers.ts";
+
+import DeviceMemory from "../components/examples/DeviceMemory.tsx";
+const deviceMemoryCode: string = fs.readFileSync(
+  "./src/components/examples/DeviceMemory.tsx",
+  "utf-8"
+);
+
+const url = normalizeSlug(Astro.url.pathname);
+const { title, description } = pagesData[url];
+---
+
+<BaseLayout description={description} title={title}>
+  <h1>{title}</h1>
+
+  <p>
+    A device's capabilities depend on a few things, like the network, the CPU
+    core count, and the amount of memory available. The <a
+      target="_blank"
+      href="https://developer.mozilla.org/docs/Web/API/Device_Memory_API"
+      >Device Memory API</a
+    > provides insight into the memory available by providing the read-only
+    property <code>deviceMemory</code> on the <code>Navigator</code> interface.
+    The property returns an approximate amount of device memory in gigabytes as
+    a floating point number.
+  </p>
+
+  <p>
+    The value returned is imprecise, protecting the user's privacy. It's
+    calculated by rounding down to the nearest power of 2, then dividing that
+    number by 1,024. The number is also clamped within an upper and lower bound.
+    So you can expect the numbers: <code>0.25</code>, <code>0.5</code>, <code
+      >1</code
+    >, <code>2</code>, <code>4</code>, and <code>8</code> (gigabytes).
+  </p>
+
+  <p>
+    The Device Memory API is only available on modern versions of Chrome and
+    Edge.
+  </p>
+
+  <h3>Device Memory Example</h3>
+  <CodeTab code={deviceMemoryCode} client:load>
+    <DeviceMemory client:load />
+  </CodeTab>
+
+  <h2>Usage</h2>
+
+  <p>
+    The Device Memory API was not measured in 2021. In 2022, its first year of
+    tracking, the API was used on 6.27% of desktop pages and 5.76% of mobile
+    pages, making it the fifth most used capability on desktop and mobile.
+  </p>
+
+  <p>
+    For the release of Facebook's 2019 redesign, FB5, they actively integrated
+    adaptive loading into this new version. They did this by adapting based on
+    users' actual hardware, changing what loaded and what ran based on what
+    users were using. For example, on the desktop, Facebook defined buckets of
+    users based on CPU cores (<a
+      target="_blank"
+      href="https://developer.mozilla.org/docs/Web/API/Navigator/hardwareConcurrency"
+      ><code>navigator.hardwareConcurrency</code></a
+    >) and device memory (<code>navigator.deviceMemory</code>) available.
+  </p>
+
+  <p>
+    Check out <a
+      target="_blank"
+      href="https://www.youtube.com/watch?v=puUPpVrIRkc&t=1443s">this video</a
+    > from Chrome Dev Summit 2019, starting at 24:03, where Nate Schloss shares
+    how Facebook handles adaptive loading using features such as the Device
+    Memory API.
+  </p>
+
+  <iframe
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/puUPpVrIRkc?si=ZR82s3ErwK5kmQoU&start=1443"
+    title="YouTube video player"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen></iframe>
+</BaseLayout>

@@ -40,7 +40,19 @@ figure {
 }
 
 iframe {
+  border: none;
   max-width: 100%;
+
+  &[src^="https://www.youtube.com/embed/"]
+  {
+    aspect-ratio: 1280 / 720;
+    display: flex;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    width: 100%;
+  }
 }
 
 h1,
