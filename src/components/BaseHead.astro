@@ -1,25 +1,26 @@
 ---
-import '../styles/global.scss';
-import Theme from './Theme.jsx';
+import "../styles/global.scss";
+import Theme from "./Theme.jsx";
 
 export interface Props {
-	title: string;
-	description: string;
-	image?: string;
+  title: string;
+  description: string;
+  image?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
-const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
+const { title, description, image = "/placeholder-social.jpg" } = Astro.props;
 ---
+
 <!-- Theme -->
 <Theme />
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
 <meta name="generator" content={Astro.generator} />
+<link rel="manifest" href="/manifest.json" />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -44,5 +45,17 @@ const { title, description, image = '/placeholder-social.jpg' } = Astro.props;
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
 <!-- Imported CSS -->
-<link rel="preload" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap"></noscript>
+<link
+  rel="preload"
+  href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap"
+  as="style"
+  onload="
+  this.onload = null; this.rel = 'stylesheet'
+  "
+/>
+<noscript
+  ><link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap"
+  /></noscript
+>

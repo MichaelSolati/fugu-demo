@@ -12,6 +12,10 @@ export default {
     title: "Web Share API",
     description: "The Web Share API uses platform-specific sharing of a device to send data such as text, a URL, and more from a web application to any application."
   },
+  "/add-to-home-screen/": {
+    title: "Add to Home Screen",
+    description: "The ability to add an application to the home screen is a crucial feature of PWAs."
+  },
   "/media-session-api/": {
     title: "Media Session API",
     description: "The Media Session API allows developers to create custom media notifications for audio or video content on the web."
