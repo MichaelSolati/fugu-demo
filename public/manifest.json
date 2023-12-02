@@ -48,5 +48,63 @@
       "sizes": "512x512",
       "type": "image/png"
     }
+  ],
+  "shortcuts": [
+    {
+      "name": "Async Clipboard API",
+      "short_name": "Clipboard",
+      "description": "The Async Clipboard API, allows web application to read and write into the system's clipboard.",
+      "url": "/async-clipboard-api/",
+      "icons": [{ "src": "/shortcuts/async-clipboard-api.png", "sizes": "24x24" }]
+    },
+    {
+      "name": "Web Share API",
+      "short_name": "Share",
+      "description": "The Web Share API uses platform-specific sharing of a device to send data such as text, a URL, and more from a web application to any application.",
+      "url": "/web-share-api/",
+      "icons": [{ "src": "/shortcuts/web-share-api.png", "sizes": "24x24" }]
+    },
+    {
+      "name": "Add to Home Screen",
+      "short_name": "Home Screen",
+      "description": "The ability to add an application to the home screen is a crucial feature of PWAs.",
+      "url": "/add-to-home-screen/",
+      "icons": [{ "src": "/shortcuts/add-to-home-screen.png", "sizes": "24x24" }]
+    },
+    {
+      "name": "Media Session API",
+      "short_name": "Media",
+      "description": "The Media Session API allows developers to create custom media notifications for audio or video content on the web.",
+      "url": "/media-session-api/",
+      "icons": [{ "src": "/shortcuts/media-session-api.png", "sizes": "24x24" }]
+    },
+    {
+      "name": "Device Memory API",
+      "short_name": "Device",
+      "description": "The Device Memory API provides insight into the memory available by providing the read-only property deviceMemory.",
+      "url": "/device-memory-api/",
+      "icons": [{ "src": "/shortcuts/device-memory-api.png", "sizes": "24x24" }]
+    },
+    {
+      "name": "Service Worker API",
+      "short_name": "Service Worker",
+      "description": "Service workers act as a client-side proxy that puts developers in control of the system's cache and how to respond to resource requests.",
+      "url": "/service-worker-api/",
+      "icons": [{ "src": "/shortcuts/service-worker-api.png", "sizes": "24x24" }]
+    },
+    {
+      "name": "Gamepad API",
+      "short_name": "Gamepad",
+      "description": "The Gamepad API is how web applications respond to input from gamepads and other game controllers.",
+      "url": "/gamepad-api/",
+      "icons": [{ "src": "/shortcuts/gamepad-api.png", "sizes": "24x24" }]
+    },
+    {
+      "name": "Push API",
+      "short_name": "Push",
+      "description": "The Push API allows web applications to receive messages from a server regardless of whether the application was in the foreground.",
+      "url": "/push-api/",
+      "icons": [{ "src": "/shortcuts/push-api.png", "sizes": "24x24" }]
+    }
   ]
 }
