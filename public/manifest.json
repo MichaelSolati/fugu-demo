@@ -7,6 +7,13 @@
   "orientation": "any",
   "scope": "/",
   "start_url": "/",
+  "id": "com.michaelsolati.fugudemo",
+  "description": "A simple web app showcasing the capabilities of the web!",
+  "dir": "auto",
+  "lang": "en",
+  "categories": [
+    "education"
+  ],
   "icons": [
     {
       "src": "/icons/icon-72x72.png",
