@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.michaelsolati.fugudemo",
+        "sha256_cert_fingerprints": ["9F:AC:EC:57:84:B2:EB:BD:1A:AB:F8:E5:E5:54:94:E7:1E:C2:5A:FE:E9:05:A9:2D:EC:15:8C:06:26:44:00:A9"]
+      }
+    }]
