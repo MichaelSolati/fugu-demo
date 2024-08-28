@@ -2,6 +2,7 @@
 import BaseHead from "../components/BaseHead.astro";
 import ContentWrapper from "../components/ContentWrapper.tsx";
 import Navigation from "../components/Navigation.tsx";
+import Slides from "../components/Slides.tsx";
 import pagesData from "../pagesData.ts";
 
 export interface Props {
@@ -32,6 +33,7 @@ const {
       <main class="mdc-top-app-bar--fixed-adjust">
         <slot />
         <Navigation client:only="react" />
+        <Slides client:only="react" />
       </main>
     </ContentWrapper>
   </body>
