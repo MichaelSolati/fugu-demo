@@ -7,5 +7,10 @@ import mdx from "@astrojs/mdx";
 // https://astro.build/config
 export default defineConfig({
   site: "https://fugu-demo.web.app",
-  integrations: [react(), serviceWorker(), mdx()]
+  integrations: [react(), serviceWorker(), mdx()],
+  vite: {
+    ssr: {
+      noExternal: ["react-use"],
+    },
+  },
 });
