@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { useSearchParam } from "react-use";
+
 import "../styles/components/Drawer.scss";
 import pagesData from "../pagesData.ts";
 
@@ -6,8 +9,20 @@ interface Props {
   toggleDrawer: () => void;
 }
 
+const getSearchParams = () => {
+  if (typeof window === "undefined") return "";
+  const params = new URLSearchParams(window.location.search);
+  return params.toString();
+};
+
 export default function Drawer({ isOpen }: Props) {
-  const pages = Object.entries(pagesData);
+  const slides = useSearchParam("slides");
+  const slide = useSearchParam("slide");
+  const [search, setSearch] = useState(getSearchParams());
+
+  useEffect(() => {
+    setSearch(getSearchParams());
+  }, [slides, slide]);
 
   return (
     <div
@@ -15,15 +30,15 @@ export default function Drawer({ isOpen }: Props) {
     >
       <div className="drawer__content">
         <ul className="mdc-deprecated-list">
-          {pages.map((page) => (
+          {Object.entries(pagesData).map(([path, page]) => (
             <a
-              key={page[0]}
-              href={page[0]}
+              key={path}
+              href={`${path}${search ? `?${search}` : ""}`}
               className="mdc-deprecated-list-item"
             >
               <li tabIndex={0}>
                 <span className="mdc-deprecated-list-item__text">
-                  {page[1].navHome ?? page[1].title}
+                  {page.navHome ?? page.title}
                 </span>
               </li>
             </a>
